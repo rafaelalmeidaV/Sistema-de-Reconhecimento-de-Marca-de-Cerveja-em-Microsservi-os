@@ -1,44 +1,44 @@
 version: '3.8'
 
 services:
-  # Serviço do Nest.js
   api-nest:
     build:
-      context: ./api-inbev # Caminho ajustado para o microsserviço em Nest.js
+      context: ./api-inbev 
       dockerfile: Dockerfile
     networks:
       - minha-rede
     ports:
-      - "3000:3000" # Mapeia a porta 3000 do container para a máquina host
+      - "3000:3000" 
     depends_on:
       - ocr-service
-      - mongo # Garante que o MongoDB estará pronto antes de iniciar o Nest.js
+      - mongo 
     volumes:
-      - ./api-inbev:/app # Sincroniza o código local com o container
+      - ./api-inbev:/app 
     environment:
-      - MONGO_URL=mongodb://mongo:27017/beerdb # Variável de conexão com o MongoDB
+      - MONGODB_URI=mongodb://mongo:27017/inbev 
 
-  # Serviço de OCR em Python
+  
   ocr-service:
     build:
-      context: ./api-python # Caminho ajustado para o microsserviço de OCR
+      context: ./api-python 
       dockerfile: Dockerfile
     networks:
       - minha-rede
     ports:
-      - "3001:3001" # Mapeia a porta 5000 do container para a máquina host
+      - "3001:3001" 
     volumes:
-      - ./api-python:/app # Sincroniza o código local com o container
+      - ./api-python:/app 
 
-  # Serviço de banco de dados MongoDB
+  
+  
   mongo:
-    image: mongo:6.0 # Usa a imagem oficial do MongoDB
+    image: mongo:6.0 
     networks:
       - minha-rede
     volumes:
-      - mongo_data:/data/db
+      - ./api-nest/db
     ports:
-      - "27017:27017" # Exponha a porta padrão do MongoDB
+      - "27017:27017" 
 
 networks:
   minha-rede:

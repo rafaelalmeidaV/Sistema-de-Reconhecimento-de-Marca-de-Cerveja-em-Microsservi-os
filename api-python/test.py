@@ -11,7 +11,6 @@ from sklearn.model_selection import train_test_split
 
 
 
-# Função para pré-processar a imagem
 def preprocess_image(image):
     gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
     denoised = cv2.bilateralFilter(gray, d=9, sigmaColor=75, sigmaSpace=75)
@@ -56,10 +55,9 @@ def classify_beer_brand(image, vectorizer, classifier):
     image = cv2.imread(image)
     preprocessed = preprocess_image(image)
     
-    # Extrair texto da imagem
     text = extract_text(preprocessed)
     
-    if text.strip():  # Verifica se o texto não está vazio
+    if text.strip():  
         text_vectorized = vectorizer.transform([text])
         prediction = classifier.predict(text_vectorized)
         probabilities = classifier.predict_proba(text_vectorized)
@@ -71,7 +69,6 @@ def classify_beer_brand(image, vectorizer, classifier):
 def load_data(data_dir):
     X = []
     y = []
-    # Verifique se o diretório existe
     if not os.path.exists(data_dir):
         print(f"Diretório não encontrado: {data_dir}")
         return X, y
@@ -96,17 +93,14 @@ def load_data(data_dir):
 
 # Exemplo de uso
 def extract_brand(image):
-    # Dados de exemplo (você precisará substituir isso com seus próprios dados rotulados)
     print("Extraindo marca da imagem...",image ,flush=True)
     data_dir = "img/"
     X,y = load_data(data_dir) 
-    # Dividir dados em treino e teste
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
     vectorizer, classifier = train_classifier(X_train, y_train)
     X_test_vectorized = vectorizer.transform(X_test)
     y_pred = classifier.predict(X_test_vectorized)
     print(classification_report(y_test, y_pred), flush=True)
-    # Treinar o classificador
 
     predicted_brand, confidence, extracted_text = classify_beer_brand(image, vectorizer, classifier)
     print(f"Imagem: {image}", flush=True)

@@ -1,6 +1,8 @@
 # compiled output
 /dist
 api-inbev/node_modules/*
+api-inbev/dist/*
+api-inbev/build/*
 /build
 
 # Logs

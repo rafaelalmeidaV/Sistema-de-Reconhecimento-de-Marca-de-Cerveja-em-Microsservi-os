@@ -4,6 +4,7 @@ import {
   UploadedFile,
   UseInterceptors,
   BadRequestException,
+  Get,
 } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
 import fetch from 'node-fetch'; // Utilize node-fetch
@@ -17,6 +18,16 @@ import { FileInfo } from 'schemas/file.schema';
 @Controller('upload')
 export class UploadController {
   constructor(private service: AppService) {
+  }
+  @Get('view-data')
+  async viewData() {
+    try {
+      const data = await this.service.find();
+      return { status: 'success', data };
+    } catch (error) {
+      console.error('Error retrieving data:', error);
+      return { status: 'error', message: error.message };
+    }
   }
   @Post()
   @UseInterceptors(
@@ -32,6 +43,7 @@ export class UploadController {
       },
     }),
   )
+
   async uploadFile(@UploadedFile() file: Multer.File) {
     if (!file) {
       throw new BadRequestException('File is required');
@@ -72,4 +84,6 @@ export class UploadController {
       throw new BadRequestException('Error processing image');
     }
   }
+
+
 }

@@ -22,6 +22,16 @@ let UploadController = class UploadController {
     constructor(service) {
         this.service = service;
     }
+    async viewData() {
+        try {
+            const data = await this.service.find();
+            return { status: 'success', data };
+        }
+        catch (error) {
+            console.error('Error retrieving data:', error);
+            return { status: 'error', message: error.message };
+        }
+    }
     async uploadFile(file) {
         if (!file) {
             throw new common_1.BadRequestException('File is required');
@@ -57,6 +67,12 @@ let UploadController = class UploadController {
     }
 };
 exports.UploadController = UploadController;
+__decorate([
+    (0, common_1.Get)('view-data'),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", Promise)
+], UploadController.prototype, "viewData", null);
 __decorate([
     (0, common_1.Post)(),
     (0, common_1.UseInterceptors)((0, platform_express_1.FileInterceptor)('file', {

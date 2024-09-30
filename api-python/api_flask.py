@@ -32,9 +32,7 @@ def process_image():
         try:
             file_content = file.read()
             print(f"File content length: {len(file_content)} bytes", flush=True)
-            # Tente abrir a imagem
             image = Image.open(io.BytesIO(file_content))
-            #printa a imagem
             print(image)
             image.save(f"upload/{file.filename}")
             print("Current files in upload directory:", os.listdir(folder), flush=True)

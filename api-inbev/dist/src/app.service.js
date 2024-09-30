@@ -21,8 +21,27 @@ let AppService = class AppService {
         this.userModel = userModel;
     }
     async create(doc) {
-        const result = await new this.userModel(doc).save();
-        return result.id;
+        try {
+            console.log('Attempting to save document:', JSON.stringify(doc));
+            const newDoc = new this.userModel(doc);
+            console.log('Created new document instance:', newDoc);
+            const result = await newDoc.save();
+            console.log('Document saved successfully:', result);
+            return result.id;
+        }
+        catch (error) {
+            console.error('Error saving document:', error);
+            throw error;
+        }
+    }
+    async find() {
+        try {
+            return this.userModel.find();
+        }
+        catch (error) {
+            console.error('Error retrieving data:', error);
+            throw error;
+        }
     }
     getHello() {
         return 'Hello World!';
