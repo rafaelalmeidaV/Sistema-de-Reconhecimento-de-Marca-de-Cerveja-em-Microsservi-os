@@ -2,7 +2,7 @@
 
 ## Visão Geral
 
-Este projeto implementa um sistema de reconhecimento de marca de cerveja utilizando uma arquitetura de microsserviços. O sistema é capaz de identificar a marca de uma cerveja a partir de uma imagem de uma lata, utilizando técnicas de Reconhecimento Óptico de Caracteres (OCR).
+Este projeto implementa um sistema de reconhecimento de marca de cerveja utilizando uma arquitetura de microsserviços. O sistema é capaz de identificar a marca das cervejas heineken, skol, brahma, antarctica a partir de uma imagem de uma lata, utilizando técnicas de Reconhecimento Óptico de Caracteres (OCR).
 
 ## Arquitetura
 
