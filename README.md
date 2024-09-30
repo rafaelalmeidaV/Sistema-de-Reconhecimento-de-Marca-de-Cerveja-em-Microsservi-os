@@ -43,10 +43,10 @@ O sistema é composto por dois microsserviços principais:
 
 ## Uso
 
-Para testar o sistema, você pode enviar uma requisição POST para a API Backend com uma imagem de uma lata de cerveja:
+Para testar o sistema, você pode enviar uma requisição POST para a API Backend com uma imagem de uma lata de cerveja no multipart:
 
 ```bash
-curl -X POST -F "file=@/caminho/para/sua/imagem.jpg" http://localhost:3000/upload
+curl -X POST -F "file=@/imagem.jpg" http://localhost:3000/upload
 ```
 
 A resposta incluirá o nome da marca identificada e um status de sucesso.
