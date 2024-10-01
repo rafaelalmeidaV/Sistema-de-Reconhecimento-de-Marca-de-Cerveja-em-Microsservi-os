@@ -28,8 +28,7 @@ O sistema é composto por dois microsserviços principais:
 
 1. Clone o repositório:
    ```
-   git clone https://github.com/seu-usuario/beer-brand-recognition.git
-   cd beer-brand-recognition
+   git clone https://github.com/rafaelalmeidaV/Sistema-de-Reconhecimento-de-Marca-de-Cerveja-em-Microsservi-os.git
    ```
 
 2. Construa e inicie os containers:
@@ -39,7 +38,6 @@ O sistema é composto por dois microsserviços principais:
 
 3. O sistema estará disponível nos seguintes endereços:
    - API Backend: http://localhost:3000
-   - Serviço de OCR: http://localhost:3001
 
 ## Uso
 
