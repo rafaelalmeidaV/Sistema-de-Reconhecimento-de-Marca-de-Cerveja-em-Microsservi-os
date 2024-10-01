@@ -1,23 +1,26 @@
 # Use Node.js como imagem base
 FROM node:18-alpine
 
-# Set working directory
+# Define o diretório de trabalho
 WORKDIR /app
 
-# Copy package.json and package-lock.json
+# Copia o package.json e package-lock.json (se existir)
 COPY package*.json ./
 
-# Install dependencies
+# Instala as dependências do projeto
 RUN npm install
 
-# Copy the rest of the application code
+# Instala o NestJS CLI globalmente
+RUN npm install -g @nestjs/cli
+
+# Copia o restante do código da aplicação
 COPY . .
 
-# Build the Nest.js application
+# Compila a aplicação Nest.js
 RUN npm run build
 
-# Expose port 3000
+# Expõe a porta 3000
 EXPOSE 3000
 
-# Start the Nest.js server
+# Inicia o servidor Nest.js
 CMD ["npm", "run", "start:dev"]
