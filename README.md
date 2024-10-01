@@ -44,6 +44,10 @@ O sistema é composto por dois microsserviços principais:
 
 3. O sistema estará disponível nos seguintes endereços:
    - API Backend: http://localhost:3000
+  
+4. Rotas do sistema:
+   - POST - http://localhost:3000/upload
+   - GET - http://localhost:3000/upload/view-data
 
 ## Uso
 
