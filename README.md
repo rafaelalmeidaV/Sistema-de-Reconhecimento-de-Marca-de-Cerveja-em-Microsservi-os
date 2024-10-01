@@ -39,7 +39,7 @@ O sistema é composto por dois microsserviços principais:
 
 2. Construa e inicie os containers:
    ```
-   docker-compose up --build
+   docker-compose up --build -d
    ```
 
 3. O sistema estará disponível nos seguintes endereços:
