@@ -77,7 +77,3 @@ api-nest/
 └── README.md
 ```
 
-
-
-
-Link do Projeto: [https://github.com/rafaelalmeidaV/Sistema-de-Reconhecimento-de-Marca-de-Cerveja-em-Microsservi-os](https://github.com/rafaelalmeidaV/Sistema-de-Reconhecimento-de-Marca-de-Cerveja-em-Microsservi-os)
