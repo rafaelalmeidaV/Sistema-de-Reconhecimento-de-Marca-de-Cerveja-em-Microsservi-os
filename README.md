@@ -2,7 +2,13 @@
 
 ## Visão Geral
 
-Este projeto implementa um sistema de reconhecimento de marca de cerveja utilizando uma arquitetura de microsserviços. O sistema é capaz de identificar a marca das cervejas heineken, skol, brahma, antarctica a partir de uma imagem de uma lata, utilizando técnicas de Reconhecimento Óptico de Caracteres (OCR).
+Este projeto implementa um sistema de reconhecimento de marcas de cerveja utilizando uma arquitetura de microsserviços. O sistema é capaz de identificar as marcas Heineken, Skol, Brahma e Antarctica a partir de imagens de latas, utilizando técnicas de Reconhecimento Óptico de Caracteres (OCR).
+
+Para desenvolver este sistema, eu treinei minha própria Inteligência Artificial (IA) usando uma combinação de tecnologias e bibliotecas de machine learning. O processamento de imagens é realizado com OpenCV, que é utilizado para melhorar a qualidade das imagens antes da extração do texto. A extração de texto é feita com a biblioteca Tesseract OCR, que converte imagens em texto legível.
+
+Além disso, para classificar as marcas de cerveja, utilizei um classificador Random Forest, que foi treinado em um conjunto de dados contendo amostras de texto extraído de latas. O pré-processamento das imagens inclui a conversão para escala de cinza, filtragem, equalização e binarização, a fim de otimizar a detecção de texto.
+
+Devido ao fato de eu ter treinado a IA com um conjunto de dados específico e ter implementado várias etapas de processamento, o sistema se tornou mais pesado para rodar, exigindo recursos significativos de computação.
 
 ## Arquitetura
 
@@ -43,9 +49,8 @@ O sistema é composto por dois microsserviços principais:
 
 Para testar o sistema, você pode enviar uma requisição POST para a API Backend com uma imagem de uma lata de cerveja no multipart:
 
-```bash
-curl -X POST -F "file=@/imagem.jpg" http://localhost:3000/upload
-```
+![image](https://github.com/user-attachments/assets/80ad4b1d-96af-4d06-8d26-62bfac21ba3b)
+
 
 A resposta incluirá o nome da marca identificada e um status de sucesso.
 
